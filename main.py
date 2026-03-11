@@ -9,10 +9,10 @@ from shot import Shot
 
 def main():
     pygame.init()
-    pygame.font.init()  # Initialize the font module
+    pygame.font.init()  
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
-    font = pygame.font.Font(None, 74) # Default font, size 74
+    font = pygame.font.Font(None, 74) 
 
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
@@ -33,10 +33,9 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-            # Handle restart or quit after game over
+            
             if game_over and event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    # Restart by clearing groups and calling main again
                     for group in [updatable, drawable, asteroids, shots]:
                         group.empty()
                     main()
@@ -67,9 +66,8 @@ def main():
             obj.draw(screen)
 
         if game_over:
-            msg = font.render("GAME OVER", True, "red")
+            msg = font.render("GAME OVER", True, "white")
             sub_msg = font.render("SPACE to Restart - ESC to Quit", True, "white")
-            # Draw messages centered
             screen.blit(msg, (SCREEN_WIDTH / 2 - 150, SCREEN_HEIGHT / 2 - 50))
             screen.blit(sub_msg, (SCREEN_WIDTH / 2 - 400, SCREEN_HEIGHT / 2 + 50))
 
